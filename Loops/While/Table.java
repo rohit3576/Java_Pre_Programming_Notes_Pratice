@@ -1,14 +1,16 @@
 
 import java.util.Scanner;
 
-class Multi{
+class Table{
     public static void main(String[] args) {
-        System.out.println("ENter the number: ");
         Scanner sc= new Scanner(System.in);
+        System.out.print("Enter the number: ");
         int num= sc.nextInt();
-        for(int i=1; i<=10; i++)
-        {
+        int i=1;
+        while(i<=10){
             System.out.println(num*i);
+            i++;
+
         }
     }
 }

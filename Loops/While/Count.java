@@ -1,14 +1,17 @@
 
 import java.util.Scanner;
 
-class Multi{
+class Count{
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         System.out.println("ENter the number: ");
-        Scanner sc= new Scanner(System.in);
         int num= sc.nextInt();
-        for(int i=1; i<=10; i++)
-        {
-            System.out.println(num*i);
+        int i=0;
+        while(num>0){
+            num/=10;
+            i++;
         }
+        System.out.println(i);
+
     }
 }
