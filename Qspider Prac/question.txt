@@ -1,0 +1,48 @@
+Decison
+1 Check number is negattive or postive, *
+2 Even or odd Check *
+3 WAP largest of two number *
+4 WAP find the largest of three number
+5 Check wether year is a leap year or not *
+6 Check number is divisible by 5 and 11 *
+7 Check char is vowel or consonent*
+8 Check char is alphabet digit or special char
+9 Check number is multiple of 10 *
+10 To give grade based on marks 
+11 check person is eligble for vote or not *
+12 find wether the number is 1 digit 2 digit or 3 digit or more than 3
+13 Check wether a triangle is valid or not *
+14 display month name using switch *
+15 Calulator using switch
+16 Check number is greater 100 or not *
+17 Check wether the char is upper case or lower case
+18 Check wether give number is perfect square
+19 Display day name using switch
+20 To check given number lies between 1 and 50 *
+
+-----------------------------------------------------------------------------------
+Looping Statement
+
+1 To print 1 to 10*
+2 To print A to Z
+3 To print even number between 1 to 50*
+4 To print odd number from 1 to 50*
+5 Find sum of 10 natural number *
+6 Find the factorial of give number *
+7 To print multiplication table of a number *
+8 To count digits in number *
+9 Find the digit summesion *
+10 Reverse a number *
+11 TO check number is palindrome or not*
+12 Prime or not 
+13 Print all prime numbers between 1 to 100
+14 Print Fibonacci series*
+15 Find the largest digit in the number *--
+16 Smallest digit in given number 
+17 Print all asci value of lower case a to Z
+18 Print all factors of a given number*
+19 Find the sum of even digit of given number *
+20 Print numbers divisible by 5 between 1 to 100*
+21 Print square of numbers from 1 to 10 *
+22 Calulate the LCM of give number
+
