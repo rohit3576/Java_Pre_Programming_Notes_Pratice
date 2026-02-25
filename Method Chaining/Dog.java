@@ -27,3 +27,12 @@ class Dog {
         System.out.println(breed + " " + age + " years old");
     }
 }
+class DogDriver{
+    public static void main(String[] args) {
+        Dog d = new Dog();
+d.setName("Tommy").setBreed("Labrador").setAge(3).bark().info();
+
+
+
+    }
+}
