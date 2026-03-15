@@ -1,336 +1,492 @@
 import java.util.Objects;
 
+// Base class with overridden methods - all other classes will extend this
+class Parent {
+    String brand;
+    String model;
+    int year;
+    double price;
+    String color;
+
+    public Parent(String brand, String model, int year, double price, String color) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.price = price;
+        this.color = color;
+    }
+
+    // toString() - converts object to string
+    @Override
+    public String toString() {
+        return brand + " " + model + " " + year + " $" + price + " " + color;
+    }
+
+    // equals() - compares two objects
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        
+        Parent p = (Parent) obj;
+        return year == p.year &&
+               price == p.price &&
+               brand.equals(p.brand) &&
+               model.equals(p.model) &&
+               color.equals(p.color);
+    }
+
+    // hashCode() - generates unique number for object
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, year, price, color);
+    }
+}
+
+// 1. Car class
+class Car extends Parent {
+    int doors;
+    String fuel;
+    double engineSize;
+    boolean automatic;
+    String bodyType;
+
+    public Car(String brand, String model, int year, double price, String color,
+               int doors, String fuel, double engineSize, boolean automatic, String bodyType) {
+        super(brand, model, year, price, color);
+        this.doors = doors;
+        this.fuel = fuel;
+        this.engineSize = engineSize;
+        this.automatic = automatic;
+        this.bodyType = bodyType;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Doors:" + doors + " Fuel:" + fuel + 
+               " Engine:" + engineSize + "L Auto:" + automatic + " Body:" + bodyType;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        Car c = (Car) obj;
+        return doors == c.doors &&
+               engineSize == c.engineSize &&
+               automatic == c.automatic &&
+               fuel.equals(c.fuel) &&
+               bodyType.equals(c.bodyType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), doors, fuel, engineSize, automatic, bodyType);
+    }
+}
+
+// 2. Bike class
+class Bike extends Parent {
+    int cc;
+    String type;
+    boolean fairing;
+    double tankSize;
+    String suspension;
+
+    public Bike(String brand, String model, int year, double price, String color,
+                int cc, String type, boolean fairing, double tankSize, String suspension) {
+        super(brand, model, year, price, color);
+        this.cc = cc;
+        this.type = type;
+        this.fairing = fairing;
+        this.tankSize = tankSize;
+        this.suspension = suspension;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " CC:" + cc + " Type:" + type + 
+               " Fairing:" + fairing + " Tank:" + tankSize + "L Suspension:" + suspension;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        Bike b = (Bike) obj;
+        return cc == b.cc &&
+               tankSize == b.tankSize &&
+               fairing == b.fairing &&
+               type.equals(b.type) &&
+               suspension.equals(b.suspension);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), cc, type, fairing, tankSize, suspension);
+    }
+}
+
+// 3. Truck class
+class Truck extends Parent {
+    double payload;
+    int axles;
+    String truckClass;
+    double bedLength;
+    boolean hitch;
+
+    public Truck(String brand, String model, int year, double price, String color,
+                 double payload, int axles, String truckClass, double bedLength, boolean hitch) {
+        super(brand, model, year, price, color);
+        this.payload = payload;
+        this.axles = axles;
+        this.truckClass = truckClass;
+        this.bedLength = bedLength;
+        this.hitch = hitch;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Payload:" + payload + "tons Axles:" + axles + 
+               " Class:" + truckClass + " Bed:" + bedLength + "ft Hitch:" + hitch;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        Truck t = (Truck) obj;
+        return payload == t.payload &&
+               axles == t.axles &&
+               bedLength == t.bedLength &&
+               hitch == t.hitch &&
+               truckClass.equals(t.truckClass);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), payload, axles, truckClass, bedLength, hitch);
+    }
+}
+
+// 4. Boat class
+class Boat extends Parent {
+    double length;
+    String boatType;
+    int engines;
+    double fuelCap;
+    boolean cabin;
+
+    public Boat(String brand, String model, int year, double price, String color,
+                double length, String boatType, int engines, double fuelCap, boolean cabin) {
+        super(brand, model, year, price, color);
+        this.length = length;
+        this.boatType = boatType;
+        this.engines = engines;
+        this.fuelCap = fuelCap;
+        this.cabin = cabin;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Length:" + length + "ft Type:" + boatType + 
+               " Engines:" + engines + " Fuel:" + fuelCap + "gal Cabin:" + cabin;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        Boat b = (Boat) obj;
+        return length == b.length &&
+               engines == b.engines &&
+               fuelCap == b.fuelCap &&
+               cabin == b.cabin &&
+               boatType.equals(b.boatType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), length, boatType, engines, fuelCap, cabin);
+    }
+}
+
+// 5. Plane class
+class Plane extends Parent {
+    int passengers;
+    double wingspan;
+    double maxAlt;
+    int engines;
+    String planeType;
+
+    public Plane(String brand, String model, int year, double price, String color,
+                 int passengers, double wingspan, double maxAlt, int engines, String planeType) {
+        super(brand, model, year, price, color);
+        this.passengers = passengers;
+        this.wingspan = wingspan;
+        this.maxAlt = maxAlt;
+        this.engines = engines;
+        this.planeType = planeType;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Passengers:" + passengers + " Wingspan:" + wingspan + 
+               "m MaxAlt:" + maxAlt + "ft Engines:" + engines + " Type:" + planeType;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        Plane p = (Plane) obj;
+        return passengers == p.passengers &&
+               wingspan == p.wingspan &&
+               maxAlt == p.maxAlt &&
+               engines == p.engines &&
+               planeType.equals(p.planeType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), passengers, wingspan, maxAlt, engines, planeType);
+    }
+}
+
+// 6. Bicycle class
+class Bicycle extends Parent {
+    int gears;
+    String frameMat;
+    double wheelSize;
+    String brakeType;
+    boolean electric;
+
+    public Bicycle(String brand, String model, int year, double price, String color,
+                   int gears, String frameMat, double wheelSize, String brakeType, boolean electric) {
+        super(brand, model, year, price, color);
+        this.gears = gears;
+        this.frameMat = frameMat;
+        this.wheelSize = wheelSize;
+        this.brakeType = brakeType;
+        this.electric = electric;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Gears:" + gears + " Frame:" + frameMat + 
+               " Wheels:" + wheelSize + "in Brakes:" + brakeType + " Electric:" + electric;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        Bicycle b = (Bicycle) obj;
+        return gears == b.gears &&
+               wheelSize == b.wheelSize &&
+               electric == b.electric &&
+               frameMat.equals(b.frameMat) &&
+               brakeType.equals(b.brakeType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), gears, frameMat, wheelSize, brakeType, electric);
+    }
+}
+
+// 7. RV class
+class RV extends Parent {
+    double length;
+    int sleeps;
+    boolean bathroom;
+    String rvClass;
+    double waterTank;
+
+    public RV(String brand, String model, int year, double price, String color,
+              double length, int sleeps, boolean bathroom, String rvClass, double waterTank) {
+        super(brand, model, year, price, color);
+        this.length = length;
+        this.sleeps = sleeps;
+        this.bathroom = bathroom;
+        this.rvClass = rvClass;
+        this.waterTank = waterTank;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Length:" + length + "ft Sleeps:" + sleeps + 
+               " Bathroom:" + bathroom + " Class:" + rvClass + " Water:" + waterTank + "gal";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        RV r = (RV) obj;
+        return length == r.length &&
+               sleeps == r.sleeps &&
+               waterTank == r.waterTank &&
+               bathroom == r.bathroom &&
+               rvClass.equals(r.rvClass);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), length, sleeps, bathroom, rvClass, waterTank);
+    }
+}
+
+// 8. Bus class
+class Bus extends Parent {
+    int seats;
+    double busLength;
+    boolean wifi;
+    String busType;
+    int standing;
+
+    public Bus(String brand, String model, int year, double price, String color,
+               int seats, double busLength, boolean wifi, String busType, int standing) {
+        super(brand, model, year, price, color);
+        this.seats = seats;
+        this.busLength = busLength;
+        this.wifi = wifi;
+        this.busType = busType;
+        this.standing = standing;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Seats:" + seats + " Length:" + busLength + 
+               "m WiFi:" + wifi + " Type:" + busType + " Standing:" + standing;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        Bus b = (Bus) obj;
+        return seats == b.seats &&
+               busLength == b.busLength &&
+               standing == b.standing &&
+               wifi == b.wifi &&
+               busType.equals(b.busType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), seats, busLength, wifi, busType, standing);
+    }
+}
+
+// 9. Tractor class
+class Tractor extends Parent {
+    double horsePower;
+    String driveType;
+    int plows;
+    boolean cab;
+    String fuelType;
+
+    public Tractor(String brand, String model, int year, double price, String color,
+                   double horsePower, String driveType, int plows, boolean cab, String fuelType) {
+        super(brand, model, year, price, color);
+        this.horsePower = horsePower;
+        this.driveType = driveType;
+        this.plows = plows;
+        this.cab = cab;
+        this.fuelType = fuelType;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " HP:" + horsePower + " Drive:" + driveType + 
+               " Plows:" + plows + " Cab:" + cab + " Fuel:" + fuelType;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        Tractor t = (Tractor) obj;
+        return horsePower == t.horsePower &&
+               plows == t.plows &&
+               cab == t.cab &&
+               driveType.equals(t.driveType) &&
+               fuelType.equals(t.fuelType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), horsePower, driveType, plows, cab, fuelType);
+    }
+}
+
+// 10. Helicopter class
+class Helicopter extends Parent {
+    int rotors;
+    double maxSpeed;
+    double maxAltitude;
+    int engines;
+    String heliType;
+
+    public Helicopter(String brand, String model, int year, double price, String color,
+                      int rotors, double maxSpeed, double maxAltitude, int engines, String heliType) {
+        super(brand, model, year, price, color);
+        this.rotors = rotors;
+        this.maxSpeed = maxSpeed;
+        this.maxAltitude = maxAltitude;
+        this.engines = engines;
+        this.heliType = heliType;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Rotors:" + rotors + " Speed:" + maxSpeed + 
+               "kts MaxAlt:" + maxAltitude + "ft Engines:" + engines + " Type:" + heliType;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        Helicopter h = (Helicopter) obj;
+        return rotors == h.rotors &&
+               maxSpeed == h.maxSpeed &&
+               maxAltitude == h.maxAltitude &&
+               engines == h.engines &&
+               heliType.equals(h.heliType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), rotors, maxSpeed, maxAltitude, engines, heliType);
+    }
+}
+
+// Main class to test everything
 public class Test {
     public static void main(String[] args) {
-        // Create objects for all 10 classes
-        Student s1 = new Student(1, "Raj", "CS", 85, "999");
-        Student s2 = new Student(1, "Raj", "CS", 85, "999");
-        Employee e1 = new Employee(101, "Amit", "IT", 50000, 4);
-        Product p1 = new Product(201, "Laptop", "Electronics", 55000, 10);
-        Book b1 = new Book(301, "Java", "James", 500, "ISBN123");
-        Movie m1 = new Movie(401, "Avatar", "Cameron", 2009, 9);
-        BankAccount ba1 = new BankAccount(501, "Rahul", "SBI", 25000, "Savings");
-        Patient pt1 = new Patient(601, "Sunita", 30, "Flu", "A+");
-        HotelRoom hr1 = new HotelRoom(701, "Deluxe", 3000, true, 101);
-        Course c1 = new Course(801, "DSA", "CS", 4, 6);
-        LibraryMember lm1 = new LibraryMember(901, "Vikram", "2025", 3, "Active");
+        // Creating objects
+        Car car1 = new Car("Toyota", "Camry", 2023, 28000, "Silver", 
+                          4, "Hybrid", 2.5, true, "Sedan");
+        Car car2 = new Car("Toyota", "Camry", 2023, 28000, "Silver", 
+                          4, "Hybrid", 2.5, true, "Sedan");
+        Car car3 = new Car("Honda", "Civic", 2023, 25000, "Red", 
+                          4, "Gas", 1.8, false, "Coupe");
+        Bike bike = new Bike("Harley", "Street", 2023, 28000, "Black", 
+                            1800, "Cruiser", true, 22.7, "Telescopic");
 
-        // Print header
-        System.out.println("========================================");
-        System.out.println("    10 CLASSES DEMO WITH 5 PROPERTIES");
-        System.out.println("========================================\n");
-
-        // Display all objects
-        System.out.println("1. STUDENT      : " + s1);
-        System.out.println("2. EMPLOYEE     : " + e1);
-        System.out.println("3. PRODUCT      : " + p1);
-        System.out.println("4. BOOK         : " + b1);
-        System.out.println("5. MOVIE        : " + m1);
-        System.out.println("6. BANK ACCOUNT : " + ba1);
-        System.out.println("7. PATIENT      : " + pt1);
-        System.out.println("8. HOTEL ROOM   : " + hr1);
-        System.out.println("9. COURSE       : " + c1);
-        System.out.println("10. LIBRARY     : " + lm1);
-
-        // Test equals and hashCode
-        System.out.println("\n-------- EQUALS & HASHCODE TEST --------");
-        System.out.println("Student1: " + s1);
-        System.out.println("Student2: " + s2);
-        System.out.println("s1.equals(s2) : " + s1.equals(s2));
-        System.out.println("s1.hashCode() : " + s1.hashCode());
-        System.out.println("s2.hashCode() : " + s2.hashCode());
-        System.out.println("========================================");
-    }
-}
-
-// 1. STUDENT CLASS
-class Student { 
-    int id; 
-    String name, dept, phone; 
-    int marks;
-    
-    Student(int id, String name, String dept, int marks, String phone) {
-        this.id = id; 
-        this.name = name; 
-        this.dept = dept; 
-        this.marks = marks; 
-        this.phone = phone; 
-    }
-    
-    public String toString() { 
-        return id + "-" + name + "-" + dept + "-" + marks + "-" + phone; 
-    }
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof Student)) return false;
-        Student s = (Student) o;
-        return id == s.id && marks == s.marks && 
-               name.equals(s.name) && dept.equals(s.dept) && phone.equals(s.phone); 
-    }
-    
-    public int hashCode() { 
-        return Objects.hash(id, name, dept, marks, phone); 
-    }
-}
-
-// 2. EMPLOYEE CLASS
-class Employee { 
-    int id, salary, rating; 
-    String name, dept;
-    
-    Employee(int id, String name, String dept, int salary, int rating) {
-        this.id = id; 
-        this.name = name; 
-        this.dept = dept; 
-        this.salary = salary; 
-        this.rating = rating; 
-    }
-    
-    public String toString() { 
-        return id + "-" + name + "-" + dept + "-" + salary + "-" + rating; 
-    }
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof Employee)) return false;
-        Employee e = (Employee) o;
-        return id == e.id && salary == e.salary && rating == e.rating && 
-               name.equals(e.name) && dept.equals(e.dept); 
-    }
-    
-    public int hashCode() { 
-        return Objects.hash(id, name, dept, salary, rating); 
-    }
-}
-
-// 3. PRODUCT CLASS
-class Product { 
-    int id, price, stock; 
-    String name, category;
-    
-    Product(int id, String name, String category, int price, int stock) {
-        this.id = id; 
-        this.name = name; 
-        this.category = category; 
-        this.price = price; 
-        this.stock = stock; 
-    }
-    
-    public String toString() { 
-        return id + "-" + name + "-" + category + "-" + price + "-" + stock; 
-    }
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof Product)) return false;
-        Product p = (Product) o;
-        return id == p.id && price == p.price && stock == p.stock && 
-               name.equals(p.name) && category.equals(p.category); 
-    }
-    
-    public int hashCode() { 
-        return Objects.hash(id, name, category, price, stock); 
-    }
-}
-
-// 4. BOOK CLASS
-class Book { 
-    int id, price; 
-    String title, author, isbn;
-    
-    Book(int id, String title, String author, int price, String isbn) {
-        this.id = id; 
-        this.title = title; 
-        this.author = author; 
-        this.price = price; 
-        this.isbn = isbn; 
-    }
-    
-    public String toString() { 
-        return id + "-" + title + "-" + author + "-" + price + "-" + isbn; 
-    }
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof Book)) return false;
-        Book b = (Book) o;
-        return id == b.id && price == b.price && 
-               title.equals(b.title) && author.equals(b.author) && isbn.equals(b.isbn); 
-    }
-    
-    public int hashCode() { 
-        return Objects.hash(id, title, author, price, isbn); 
-    }
-}
-
-// 5. MOVIE CLASS
-class Movie { 
-    int id, year, rating; 
-    String title, director;
-    
-    Movie(int id, String title, String director, int year, int rating) {
-        this.id = id; 
-        this.title = title; 
-        this.director = director; 
-        this.year = year; 
-        this.rating = rating; 
-    }
-    
-    public String toString() { 
-        return id + "-" + title + "-" + director + "-" + year + "-" + rating; 
-    }
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof Movie)) return false;
-        Movie m = (Movie) o;
-        return id == m.id && year == m.year && rating == m.rating && 
-               title.equals(m.title) && director.equals(m.director); 
-    }
-    
-    public int hashCode() { 
-        return Objects.hash(id, title, director, year, rating); 
-    }
-}
-
-// 6. BANK ACCOUNT CLASS
-class BankAccount { 
-    int accNo, balance; 
-    String holder, bank, type;
-    
-    BankAccount(int accNo, String holder, String bank, int balance, String type) {
-        this.accNo = accNo; 
-        this.holder = holder; 
-        this.bank = bank; 
-        this.balance = balance; 
-        this.type = type; 
-    }
-    
-    public String toString() { 
-        return accNo + "-" + holder + "-" + bank + "-" + balance + "-" + type; 
-    }
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof BankAccount)) return false;
-        BankAccount b = (BankAccount) o;
-        return accNo == b.accNo && balance == b.balance && 
-               holder.equals(b.holder) && bank.equals(b.bank) && type.equals(b.type); 
-    }
-    
-    public int hashCode() { 
-        return Objects.hash(accNo, holder, bank, balance, type); 
-    }
-}
-
-// 7. PATIENT CLASS
-class Patient { 
-    int id, age; 
-    String name, disease, blood;
-    
-    Patient(int id, String name, int age, String disease, String blood) {
-        this.id = id; 
-        this.name = name; 
-        this.age = age; 
-        this.disease = disease; 
-        this.blood = blood; 
-    }
-    
-    public String toString() { 
-        return id + "-" + name + "-" + age + "-" + disease + "-" + blood; 
-    }
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof Patient)) return false;
-        Patient p = (Patient) o;
-        return id == p.id && age == p.age && 
-               name.equals(p.name) && disease.equals(p.disease) && blood.equals(p.blood); 
-    }
-    
-    public int hashCode() { 
-        return Objects.hash(id, name, age, disease, blood); 
-    }
-}
-
-// 8. HOTEL ROOM CLASS
-class HotelRoom { 
-    int id, price, roomNo; 
-    String type; 
-    boolean available;
-    
-    HotelRoom(int id, String type, int price, boolean available, int roomNo) {
-        this.id = id; 
-        this.type = type; 
-        this.price = price; 
-        this.available = available; 
-        this.roomNo = roomNo; 
-    }
-    
-    public String toString() { 
-        return id + "-" + type + "-" + price + "-" + available + "-" + roomNo; 
-    }
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof HotelRoom)) return false;
-        HotelRoom h = (HotelRoom) o;
-        return id == h.id && price == h.price && available == h.available && 
-               roomNo == h.roomNo && type.equals(h.type); 
-    }
-    
-    public int hashCode() { 
-        return Objects.hash(id, type, price, available, roomNo); 
-    }
-}
-
-// 9. COURSE CLASS
-class Course { 
-    int id, credits, duration; 
-    String name, dept;
-    
-    Course(int id, String name, String dept, int credits, int duration) {
-        this.id = id; 
-        this.name = name; 
-        this.dept = dept; 
-        this.credits = credits; 
-        this.duration = duration; 
-    }
-    
-    public String toString() { 
-        return id + "-" + name + "-" + dept + "-" + credits + "-" + duration; 
-    }
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof Course)) return false;
-        Course c = (Course) o;
-        return id == c.id && credits == c.credits && duration == c.duration && 
-               name.equals(c.name) && dept.equals(c.dept); 
-    }
-    
-    public int hashCode() { 
-        return Objects.hash(id, name, dept, credits, duration); 
-    }
-}
-
-// 10. LIBRARY MEMBER CLASS
-class LibraryMember { 
-    int id, books; 
-    String name, expiry, status;
-    
-    LibraryMember(int id, String name, String expiry, int books, String status) {
-        this.id = id; 
-        this.name = name; 
-        this.expiry = expiry; 
-        this.books = books; 
-        this.status = status; 
-    }
-    
-    public String toString() { 
-        return id + "-" + name + "-" + expiry + "-" + books + "-" + status; 
-    }
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof LibraryMember)) return false;
-        LibraryMember l = (LibraryMember) o;
-        return id == l.id && books == l.books && 
-               name.equals(l.name) && expiry.equals(l.expiry) && status.equals(l.status); 
-    }
-    
-    public int hashCode() { 
-        return Objects.hash(id, name, expiry, books, status); 
+        // Testing toString()
+        System.out.println("=== Testing toString() ===");
+        System.out.println("Car1: " + car1);
+        System.out.println("Car2: " + car2);
+        System.out.println("Car3: " + car3);
+        System.out.println("Bike: " + bike);
+        
+        // Testing equals()
+        System.out.println("\n=== Testing equals() ===");
+        System.out.println("car1 equals car2: " + car1.equals(car2)); // true
+        System.out.println("car1 equals car3: " + car1.equals(car3)); // false
+        System.out.println("car1 equals bike: " + car1.equals(bike)); // false
+        
+        // Testing hashCode()
+        System.out.println("\n=== Testing hashCode() ===");
+        System.out.println("car1 hash: " + car1.hashCode());
+        System.out.println("car2 hash: " + car2.hashCode());
+        System.out.println("car3 hash: " + car3.hashCode());
+        
+        // Important: Equal objects must have equal hashcodes
+        System.out.println("\ncar1 and car2 have " + 
+            (car1.hashCode() == car2.hashCode() ? "SAME" : "DIFFERENT") + " hash codes");
     }
 }
