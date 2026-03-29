@@ -7,7 +7,11 @@ public class CollectionArr{
     list.add(true);
     list.add("Hellosf");
 
-    System.out.println(list);
+    for(list.hasNext()){
+        System.out.println(list.next());
+
+        
+    }
 
 
     }
