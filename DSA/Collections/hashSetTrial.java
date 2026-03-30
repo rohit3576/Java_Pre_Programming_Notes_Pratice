@@ -33,13 +33,13 @@ public class hashSetTrial {
                     System.out.print("Enter new task: ");
                     todo.add(sc.nextLine());
                     System.out.println("Updated tasks: " + todo);
-                    t = 1; // continue loop
+                    t = 1;
                     break;
                 case 2:
                     System.out.print("Enter task to remove: ");
                     todo.remove(sc.nextLine());
                     System.out.println("Updated tasks: " + todo);
-                    t = 1; // continue loop
+                    t = 1; 
                     break;
 
                 case 3:
