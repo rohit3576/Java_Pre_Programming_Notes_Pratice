@@ -8,6 +8,16 @@ public class Pratice {
         HashMap<Integer,String> map= new HashMap<>();
 
         System.out.println(map.isEmpty());
+
+        map.put(1, "Rohit");
+        map.put(1, "Rohit");
+        map.put(1, "Rohit");
+        map.put(1, "Rohit");
+        map.put(1, "Rohit");
+        map.put(1, "Rohit");
+
+        System.out.println(map.get(1));
+        
     }
     
 }
