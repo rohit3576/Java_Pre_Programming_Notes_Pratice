@@ -10,13 +10,18 @@ public class Pratice {
         System.out.println(map.isEmpty());
 
         map.put(1, "Rohit");
-        map.put(1, "Rohit");
-        map.put(1, "Rohit");
-        map.put(1, "Rohit");
-        map.put(1, "Rohit");
-        map.put(1, "Rohit");
+        map.put(2, "Rohit");
+        map.put(3, "Rohit");
+        map.put(4, "Rohit");
+        map.put(5, "Rohit");
+        map.put(6, "Rohit");
 
         System.out.println(map.get(1));
+
+        for (int i=1; i<7;i++){
+            System.out.print(map.get(i));
+
+        }
         
     }
     
